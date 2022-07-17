@@ -1,5 +1,8 @@
+import AOS from "aos";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { mainStyle } from "../styles/GlobalStyled";
+import "aos/dist/aos.css";
 
 const SSection = styled.div`
   padding: ${mainStyle.padding};
@@ -28,12 +31,21 @@ const Con = styled.div`
 `;
 
 export const Section = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <SSection>
-      <Title>Just DO IT</Title>
+      <Title data-aos="fade-up" data-aos-duration="6000">
+        Just DO IT
+      </Title>
       <ConWrap>
-        <Con></Con>
-        <Con></Con>
+        <Con data-aos="fade-up" data-aos-anchor-placement="center-center"></Con>
+        <Con
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        ></Con>
         <Con></Con>
       </ConWrap>
     </SSection>
